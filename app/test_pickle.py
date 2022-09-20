@@ -11,19 +11,22 @@ def test_pickle():
         test_file.save(secure_filename("test_file.csv"))
 
         #read csv to dataframe
-        output = pd.read_csv("test_file.csv")
-        #logic to fetch the result
-        with open("pickle_file.pkl", "rb") as file_handle:
-            loaded_model = joblib.load(file_handle)
-        result = loaded_model.predict(output)
+        try:
+            output = pd.read_csv("test_file.csv")
+            #logic to fetch the result
+            with open("pickle_file.pkl", "rb") as file_handle:
+                loaded_model = joblib.load(file_handle)
+            result = loaded_model.predict(output)
 
-        #fetching the value to display in html
-        output['output'] = pd.Series(result)
-        #saving file
-        output.to_csv("test_file.csv",index=False)
-        cols = output.columns  # csv columns
+            #fetching the value to display in html
+            output['output'] = pd.Series(result)
+            #saving file
+            output.to_csv("test_file.csv",index=False)
+            cols = output.columns  # csv columns
 
-        return render_template("test_pickle.html",key=1,cols=cols,data=output,len1=len(output))
+            return render_template("test_pickle.html",key=1,cols=cols,data=output,len1=len(output))
+        except:
+            return render_template("error.html")
 
     else:
         return render_template("test_pickle.html",key=0)
