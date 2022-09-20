@@ -29,6 +29,6 @@ app = Flask(__name__,static_url_path='',
             template_folder='../templates')
 app.secret_key = 'your secret key'
 
-from Code import login,logout,charts,eda,model_building,predictions,view_table,download_table,import_pickle,test_pickle
+from app import login,logout,charts,eda,model_building,predictions,view_table,download_table,import_pickle,test_pickle
 
 

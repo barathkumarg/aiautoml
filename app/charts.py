@@ -1,4 +1,4 @@
-from Code import *
+from app import *
 #scatter_chart page
 @app.route('/chart',methods=['POST','GET'])
 def chart():

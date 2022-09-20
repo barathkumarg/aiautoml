@@ -1,4 +1,4 @@
-from Code import *
+from app import *
 
 #table page
 @app.route('/table_page',methods=['POST','GET'])

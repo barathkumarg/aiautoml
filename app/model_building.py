@@ -1,4 +1,4 @@
-from Code import *
+from app import *
 #Predictions
 @app.route('/predict',methods=['POST','GET'])
 def predict():

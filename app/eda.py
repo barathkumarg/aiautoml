@@ -1,4 +1,4 @@
-from Code import *
+from app import *
 
 # description display
 @app.route('/home',methods=['POST','GET'])
@@ -82,7 +82,7 @@ def replace_nan():
     if 'file' in session:
         type=request.args.get('type')
         cols=request.args.get('cols')
-        # data change Code
+        # data change app
 
         filename = session.get('file')
         df = pd.read_csv(filename)

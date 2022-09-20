@@ -1,4 +1,4 @@
-from Code import *
+from app import *
 
 @app.route('/download_table',methods=['POST','GET'])
 def download_table():

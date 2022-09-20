@@ -1,4 +1,4 @@
-from Code import *
+from app import *
 dict_ = {"Linear_multiple_Regression":"linear_multi_regression.pkl",
 
 "Ridge_Regression" : "ridge_regression.pkl",

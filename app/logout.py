@@ -1,4 +1,4 @@
-from Code import *
+from app import *
 @app.route('/logout')
 def logout():
     session.clear()

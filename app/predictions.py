@@ -1,4 +1,4 @@
-from Code import *
+from app import *
 @app.route('/demo',methods=['POST','GET'])
 def demo():
     filename = session.get('file')

@@ -1,4 +1,4 @@
-from Code import *
+from app import *
 
 @app.route('/',methods=['POST','GET'])
 def login():

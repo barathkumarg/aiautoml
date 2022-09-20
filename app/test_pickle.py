@@ -1,4 +1,4 @@
-from Code import *
+from app import *
 import pickle
 
 @app.route("/test_pickle",methods=["GET","POST"])
