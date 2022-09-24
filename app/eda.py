@@ -32,7 +32,7 @@ def home():
         c=[]
         for i in cols:
             if df[i].dtype=='object':
-                c.append('Str')
+                c.append(df[i].value_counts().idxmax())
             else:
                 c.append(round(df[i].mean(),2))
         ct.append(c)
@@ -40,7 +40,7 @@ def home():
         c=[]
         for i in cols:
             if df[i].dtype == 'object':
-                c.append('Str')
+                c.append(df[i].value_counts().idxmin())
             else:
                 c.append(round(df[i].median(),2))
         ct.append(c)
@@ -49,7 +49,7 @@ def home():
         c = []
         for i in cols:
             if df[i].dtype == 'object':
-                c.append('Str')
+                c.append('Replace')
             else:
                 c.append(statistics.mode(df[i]))
         ct.append(c)
@@ -94,6 +94,13 @@ def replace_nan():
             df[cols].fillna(value=round(df[cols].median(),2),inplace=True)
         elif type=='mode':
             df[cols].fillna(value=statistics.mode(df[cols]), inplace=True)
+
+        elif type == "max":
+            df[cols].fillna(value= df[cols].value_counts().idxmax(), inplace=True)
+
+        elif type == "min":
+            df[cols].fillna(value= df[cols].value_counts().idxmin(), inplace=True)
+
 
         df.to_csv('{0}'.format(filename),index=False)
         flash("you are successfuly logged in")

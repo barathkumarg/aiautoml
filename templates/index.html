@@ -79,28 +79,48 @@
                                         </td>
 
                                         <td>
-                                          {% if nan_len[i]==0 or ct[0][i]=='Str'%}
-                                          <h6>-</h6>
+                                          {% if nan_len[i]==0 %}
+                                           <h6>-</h6>
                                           {% else %}
+                                          {% if cols_type[i] == "object" %}
+                                          <h6><a type="button" class="btn btn-warning" href="{{url_for('replace_nan',type='max',cols=cols[i])}}">Replace</a></h6>
+
+                                          <p>Max: {{ct[0][i]}}</p>
+                                          {% else %}
+
                                           <h6><a type="button" class="btn btn-warning" href="{{url_for('replace_nan',type='mean',cols=cols[i])}}">Replace</a></h6>
-                                          {% endif %}
+
                                           <p>Mean: {{ct[0][i]}}</p>
+                                          {% endif %}
+                                          {% endif %}
                                         </td>
                                         <td>
-                                          {% if nan_len[i]==0 or ct[1][i]=='Str' %}
-                                           <h6>-</h6>
+                                          {% if nan_len[i]==0  %}
+                                             <h6>-</h6>
+                                          {% else %}
+                                          {% if cols_type[i] == "object" %}
+                                          <h6><a type="button" class="btn btn-success" href="{{url_for('replace_nan',type='min',cols=cols[i])}}">Replace</a></h6>
+
+                                          <p>Min: {{ct[1][i]}}</p>
                                           {% else %}
                                           <h6><a type="button" class="btn btn-success" href="{{url_for('replace_nan',type='median',cols=cols[i])}}">Replace</a></h6>
-                                          {% endif %}
+
                                           <p>Median: {{ct[1][i]}}</p>
+                                          {% endif %}
+                                           {% endif %}
                                         </td>
                                         <td>
-                                          {% if nan_len[i]==0 or ct[2][i]=='Str' %}
-                                           <h6>-</h6>
+                                          {% if nan_len[i]==0  %}
+                                          <h6>-</h6>
                                           {% else %}
                                           <h6><a type="button" class="btn btn-info" href="{{url_for('replace_nan',type='mode',cols=cols[i])}}">Replace</a></h6>
-                                          {% endif %}
+
+                                          {% if cols_type[i] == "object" %}
+                                          <p>-</p>
+                                          {% else %}
                                           <p>Mode: {{ct[2][i]}}</p>
+                                          {% endif %}
+                                          {% endif %}
                                         </td>
                                         <td>
                                           <h6> <a type="button" class="btn btn-secondary" href="{{url_for('drop_dummies',type='dummies1',cols=cols[i])}}">Row Drop</a></h6>
