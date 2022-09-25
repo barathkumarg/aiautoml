@@ -1,2 +1,2 @@
 # automl
-https://automl-ai.herokuapp.com/ -LIVE demo
+https://autoaiml.herokuapp.com/ -LIVE demo
