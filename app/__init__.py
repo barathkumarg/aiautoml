@@ -1,11 +1,15 @@
 from flask import Flask,flash, render_template, request, redirect, url_for,send_file, session,Response,flash,jsonify,json
 import os
+import cv2
 import math
 import numpy as np
 import statistics
 import pandas as pd
 from werkzeug.utils import secure_filename
-
+try:
+    from collections.abc import Mapping
+except ImportError:
+    from collections import Mapping
 
 #ml dependencies
 from sklearn.linear_model import LinearRegression
@@ -29,6 +33,6 @@ app = Flask(__name__,static_url_path='',
             template_folder='../templates')
 app.secret_key = 'your secret key'
 
-from app import login,logout,charts,eda,model_building,predictions,view_table,download_table,import_pickle,test_pickle
+from app import login,logout,charts,eda,model_building,predictions,view_table,download_table,import_pickle,test_pickle,video_capture
 
 
