@@ -1,0 +1,72 @@
+<div id="load" class="load">
+{% for key in data %}
+    {% if key!='Process_id' and key!='Up_time' and key!='x_axis' %}
+            <div class="col-lg-9 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body" >
+                  <h1 class="card-title">{{key}}</h1>
+                  <div style="font-size:15px;" class="card-title"  >Current Value: {{data[key][-1]}}
+
+                    <div style="font-size:15px;float:right" class="card-title"  >
+                      Deviation:
+                        {% if row_length > 1 %}
+                          {% if data[key][-1] < data[key][-2] %}
+                            <i style="color:red"> {{data[key][-1] - data[key][-2]}} </i>
+                          {% else %}
+                            <i style="color:green"> {{data[key][-1] - data[key][-2]}} </i>
+                          {% endif %}
+                        {% endif %}
+                    </div>
+
+                  </div>
+                 <canvas id="{{key}}" style="width:100%;max-width:700px;max-height:280px"></canvas>
+                </div>
+
+              </div>
+            </div>
+           {% endif %}
+    {% endfor %}
+
+    {% for key,values in data.items() %}
+        {% if key!='Process_id' and key!='Up_time' and key!='x_axis' %}
+<script>
+
+var xValues = {{data['x_axis']}};
+var yValues = {{values}};
+
+
+new Chart("{{key}}", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      fill: true,
+      pointRadius: 2,
+      borderColor: "rgba(255,0,0,0.5)",
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+
+    scales: {
+            xAxes: [{
+                ticks: {
+                    display: true,
+                    maxTicksLimit: 20
+                }
+            }]
+        },
+
+    title: {
+      display: true,
+      text: "",
+      fontSize: 16
+    }
+  }
+});
+
+</script>
+    {% endif %}
+{% endfor %}
+    </div>
