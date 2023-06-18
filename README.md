@@ -3,12 +3,12 @@
 Web application to do all the data preprocessing, chart visulization and prediction by just button clicks by just uploading the data set. My aim is to make the data analysis easy and handy to do lot of preprocessing techniques
 
 # Tech Stack
-Python - flask
-HTML
-CSS
-Java Script
-Ajax
-Bootstarp
+Python - flask,
+ HTML,
+ CSS,
+ Java Script,
+ Ajax,
+ Bootstarp.
 
 # Working
 
